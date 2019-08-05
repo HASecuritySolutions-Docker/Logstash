@@ -1,10 +1,7 @@
-FROM docker.elastic.co/logstash/logstash:7.0.0
+FROM docker.elastic.co/logstash/logstash:7.3.0
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
-USER root
-RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-elasticsearch
-RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-tld
-USER logstash
+RUN /usr/share/logstash/bin/logstash-plugin install logstash-output-syslog
 
 STOPSIGNAL SIGTERM
