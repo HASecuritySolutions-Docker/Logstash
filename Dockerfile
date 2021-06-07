@@ -1,7 +1,7 @@
-FROM docker.elastic.co/logstash/logstash:7.12.1
+FROM docker.elastic.co/logstash/logstash:7.10.1
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
-RUN /usr/share/logstash/bin/logstash-plugin update logstash-codec-cef
+RUN /usr/share/logstash/bin/logstash-plugin install logstash-codec-protobuf
 
 STOPSIGNAL SIGTERM
