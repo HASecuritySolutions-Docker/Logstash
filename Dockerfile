@@ -1,4 +1,4 @@
-FROM docker.elastic.co/logstash/logstash-oss:8.1.2
+FROM docker.elastic.co/logstash/logstash:8.2.0
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
@@ -8,6 +8,7 @@ USER root
 RUN chmod +x /usr/local/bin/docker-entrypoint \
     && chmod +r /usr/local/bin/docker-entrypoint
 USER logstash
-RUN /usr/share/logstash/bin/logstash-plugin install --preserve logstash-output-opensearch
+RUN /usr/share/logstash/bin/logstash-plugin install --preserve logstash-output-opensearch \
+    && /usr/share/logstash/bin/logstash-plugin install --preserve logstash-input-opensearch
 
 STOPSIGNAL SIGTERM
